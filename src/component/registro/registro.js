@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import './registro.css';
-
 
 const RegistrationForm = () => {
   const [name, setName] = useState('');
@@ -21,16 +21,25 @@ const RegistrationForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Aquí puedes realizar la lógica para registrar al usuario,
-    // como enviar una solicitud HTTP a un servidor.
 
-    // Por ejemplo, puedes mostrar los valores del formulario en la consola:
-    console.log('Name:', name);
-    console.log('Email:', email);
-    console.log('Password:', password);
-
-    // Después de registrar al usuario, puedes realizar otras acciones,
-    // como redireccionarlo a otra página o mostrar un mensaje de éxito.
+    // Enviar los datos al backend
+    axios.post('http://localhost:5000/crear-registro', {
+      nombre: name,
+      email: email,
+      contraseña: password,
+    })
+      .then(response => {
+        if (response && response.data) {
+          console.log(response.data.message); // Mensaje de éxito del backend
+          // Realiza las acciones necesarias después de crear el registro, como redireccionar al usuario o mostrar un mensaje de éxito
+        } else {
+          console.error('La respuesta no contiene la propiedad "data"');
+        }
+      })
+      .catch(error => {
+        console.error(error.response.data.error); // Mensaje de error del backend
+        // Realiza las acciones necesarias en caso de error
+      });
   };
 
   return (
