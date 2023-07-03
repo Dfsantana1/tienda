@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Link,  } from 'react-router-dom';
 import './login.css';
+import NavBar from '../utils/navbar';
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
@@ -35,7 +36,10 @@ const LoginForm = () => {
   };
 
   return (
+    <div>
     <form onSubmit={handleSubmit} className="login-form">
+     
+      <NavBar/>
       <div>
         <label>Email:</label>
         <input type="email" value={email} onChange={handleEmailChange} />
@@ -56,6 +60,7 @@ const LoginForm = () => {
         </button>
       </div>
     </form>
+    </div>
   );
 };
 
