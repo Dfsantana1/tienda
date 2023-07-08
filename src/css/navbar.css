@@ -1,20 +1,26 @@
+/* navbar.css */
+
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #c65b5b;
-  padding: 10px;
+  background-color: #222;
+  padding: 10px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.navbar-logo {
-  font-size: 20px;
+.navbar-logo a {
+  font-size: 24px;
   font-weight: bold;
   color: #fff;
+  text-decoration: none;
 }
 
 .navbar-links {
-  list-style: none;
   display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .navbar-links li {
@@ -22,16 +28,53 @@
 }
 
 .navbar-links li a {
-  text-decoration: none;
+  font-size: 16px;
   color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.navbar-links li a:hover {
+  color: #ff9800;
+}
+
+.navbar-links li.active a {
+  color: #ff9800;
   font-weight: bold;
 }
 
-.navbar-cart {
-  font-size: 20px;
+.navbar-cart a {
   color: #fff;
+  text-decoration: none;
+  font-size: 20px;
+  transition: color 0.3s ease;
 }
 
-.navbar-links li.active {
-  display: none;
+.navbar-cart a:hover {
+  color: #ff9800;
+}
+
+@media screen and (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+  }
+
+  .navbar-logo {
+    margin-bottom: 10px;
+  }
+
+  .navbar-links {
+    flex-direction: column;
+  }
+
+  .navbar-links li {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .navbar-cart {
+    margin-top: 10px;
+  }
 }
